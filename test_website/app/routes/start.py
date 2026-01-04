@@ -13,7 +13,6 @@ router = APIRouter()
 def start_test():
     session_id = str(uuid4())
 
-    # ✅ THIS LINE WAS MISSING
     question_ids = generate_question_ids()
 
     conn = get_connection()
@@ -36,7 +35,7 @@ def start_test():
         question_ids=question_ids
     )
 
-    response = RedirectResponse(url="/questions", status_code=302)
+    response = RedirectResponse(url="/question-list", status_code=302)
     response.set_cookie("session_id", session_id, httponly=True)
 
     return response

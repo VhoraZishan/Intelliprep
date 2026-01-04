@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Question {{ index + 1 }}</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <h2>Question {{ index + 1 }}</h2>
+
+  <p>{{ question_text }}</p>
+
+  <form method="post" action="/question/{{ index }}">
+    {% for key, value in options.items() %}
+      <div>
+        <input type="radio" name="selected_option" value="{{ key }}" required>
+        <label>{{ key }}. {{ value }}</label>
+      </div>
+    {% endfor %}
+
+    <button type="submit">Submit Answer</button>
+  </form>
+
+  <br>
+  <a href="/question-list">Back to Question List</a>
+
+</body>
+</html>

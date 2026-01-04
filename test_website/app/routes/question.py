@@ -1,9 +1,11 @@
-from fastapi import APIRouter, Request, HTTPException
+from fastapi import APIRouter, Request, HTTPException, Form
+from fastapi.templating import Jinja2Templates
+from datetime import datetime
 from app.test_engine.state import SESSION_STORE
 from app.db import get_connection
-from datetime import datetime
-
+from fastapi.responses import RedirectResponse
 router = APIRouter()
+templates = Jinja2Templates(directory="app/templates")
 
 @router.get("/question/{index}")
 def get_question(index: int, request: Request):
@@ -19,16 +21,34 @@ def get_question(index: int, request: Request):
 
     question_id = state.question_ids[index]
 
-    # Start timing
-    if index not in state.question_start_times:
-        state.question_start_times[index] = datetime.utcnow()
-
     conn = get_connection()
     cur = conn.cursor()
 
+    # 🚫 Block already attempted questions
     cur.execute(
         """
-        SELECT id, question_text, option_a, option_b, option_c, option_d
+        SELECT 1 FROM attempts
+        WHERE session_id = %s AND question_id = %s;
+        """,
+        (session_id, question_id),
+    )
+
+    if cur.fetchone():
+        cur.close()
+        conn.close()
+        raise HTTPException(
+            status_code=403,
+            detail="Question already attempted"
+        )
+
+    # ⏱️ Start timing once
+    if index not in state.question_start_times:
+        state.question_start_times[index] = datetime.utcnow()
+
+    # 📄 Fetch question
+    cur.execute(
+        """
+        SELECT question_text, option_a, option_b, option_c, option_d
         FROM questions
         WHERE id = %s;
         """,
@@ -39,23 +59,27 @@ def get_question(index: int, request: Request):
     cur.close()
     conn.close()
 
-    if not row:
+    if row is None:
         raise HTTPException(status_code=404, detail="Question not found")
 
-    return {
-        "index": index,
-        "question_id": row[0],
-        "question_text": row[1],
-        "options": {
-            "A": row[2],
-            "B": row[3],
-            "C": row[4],
-            "D": row[5],
+    return templates.TemplateResponse(
+        "question.html",
+        {
+            "request": request,
+            "index": index,
+            "question_text": row[0],
+            "options": {
+                "A": row[1],
+                "B": row[2],
+                "C": row[3],
+                "D": row[4],
+            },
         },
-    }
+    )
+
 
 @router.post("/question/{index}")
-def submit_answer(index: int, request: Request, selected_option: str):
+def submit_answer(index: int,request: Request,selected_option: str = Form(...)):
     session_id = request.cookies.get("session_id")
 
     if not session_id or session_id not in SESSION_STORE:
@@ -142,11 +166,7 @@ def submit_answer(index: int, request: Request, selected_option: str):
     cur.close()
     conn.close()
 
-    return {
-        "index": index,
-        "question_id": question_id,
-        "selected_option": selected_option.upper(),
-        "is_correct": is_correct,
-        "time_taken_sec": time_taken_sec,
-        "attempt_number": attempt_number,
-    }
+    return RedirectResponse(
+    url="/question-list",
+    status_code=303
+)

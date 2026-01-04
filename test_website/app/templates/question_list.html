@@ -9,12 +9,19 @@
   <h2>Select a Question</h2>
 
   <div class="question-grid">
-    {% for i in range(total_questions) %}
+  {% for i in range(total_questions) %}
+    {% if i in attempted_indexes %}
+      <span class="question-btn attempted">
+        Q{{ i + 1 }}
+      </span>
+    {% else %}
       <a href="/question/{{ i }}" class="question-btn">
         Q{{ i + 1 }}
       </a>
-    {% endfor %}
-  </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
 
   <form method="post" action="/submit" style="margin-top: 30px;">
     <button type="submit">Submit Test</button>
