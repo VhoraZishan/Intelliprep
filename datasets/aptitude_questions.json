@@ -1,0 +1,632 @@
+[
+  {
+    "question_id": 1,
+    "question_text": "The ages of two friends are in the ratio 6:5. The sum of their ages is 66. After how many years will the ages be in the ratio 8:7?",
+    "options": ["8", "10", "12", "15"],
+    "correct_option": "C",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 2,
+    "question_text": "An athlete decides to run the same distance in 1/4th less time than she usually took. By how much percent will she have to increase her average speed?",
+    "options": ["25%", "33.33%", "50%", "75%"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 3,
+    "question_text": "A man, a woman, and a child can do a piece of work in 6 days. Man only can do it in 24 days. Woman can do it in 16 days. In how many days can the child do the same work?",
+    "options": ["12", "18", "24", "48"],
+    "correct_option": "D",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 4,
+    "question_text": "A triangle is made from a rope. The sides of the triangle are 25 cm, 11 cm and 31 cm. What will be the area of the square made from the same rope?",
+    "options": ["280.5625", "310.25", "250", "225.75"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 5,
+    "question_text": "Pipe B fills 1/16th of a tank in 3 hours. If the filling rate doubles every hour, how much time will it take to fill the tank completely?",
+    "options": ["4 hours", "5 hours", "7 hours", "13 hours"],
+    "correct_option": "C",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 6,
+    "question_text": "1/3rd of a number is more 3 than the 1/6th of a number. Find the number.",
+    "options": ["12", "18", "24", "30"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 7,
+    "question_text": "A toy train makes 10 musical sounds. It makes 2 sounds after being defective. What is the probability that the same sound is produced 5 times consecutively?",
+    "options": ["1/16", "1/32", "1/64", "1/10"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "logical reasoning",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 8,
+    "question_text": "A person buys a horse for 15 pounds, sells it for 20, buys it back at 30, and sells it for 40. What is the total profit?",
+    "options": ["10 pounds", "15 pounds", "20 pounds", "5 pounds"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 9,
+    "question_text": "In how many ways can a girl make pizzas with 2 different toppings if there are 8 toppings available?",
+    "options": ["16", "28", "56", "64"],
+    "correct_option": "C",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 10,
+    "question_text": "A horse chases a pony 3 hours after it runs. Horse takes 4 hours to reach. Horse speed is 35 kmph. What is the pony's speed?",
+    "options": ["15 kmph", "20 kmph", "25 kmph", "30 kmph"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 11,
+    "question_text": "A street contains 1000 buildings (base 8) numbered 1 to 1000. How many 3s are used?",
+    "options": ["64", "192", "265", "54"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 12,
+    "question_text": "Staff of 5 has average age 45. After 5 years a 6th person joins and the average remains 45. Age of 6th person?",
+    "options": ["20", "25", "15", "30"],
+    "correct_option": "C",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 13,
+    "question_text": "Pointing to a picture, a man says: 'His father is my father's son.' I have no siblings. Who is in the picture?",
+    "options": ["Himself", "His son", "His father", "His nephew"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "logical reasoning",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 14,
+    "question_text": "Materials: Lilac/Balsalmic go together. Woody/Mimosaic go together. Woody/Balsalmic never. Invalid combo?",
+    "options": ["Balsalmic/Lilac", "Woody/Lemon", "Mimosaic/Woody", "Mimosaic/Lilac"],
+    "correct_option": "D",
+    "domain": "aptitude",
+    "topic": "logical reasoning",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 15,
+    "question_text": "A lies Mon-Wed. B lies Thu-Sat. Both say 'Yesterday I lied.' What day is today?",
+    "options": ["Sunday", "Thursday", "Saturday", "Tuesday"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "logical reasoning",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 16,
+    "question_text": "Scientist goes 1 mile North, 2 miles East, 1 mile South at the North Pole. Bear color?",
+    "options": ["White", "Black", "Gray", "Brown"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "logical reasoning",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 17,
+    "question_text": "Linda is taller than Chelsea and 2 pillars. Juli is shorter than Linda. Is Chelsea taller than Juli?",
+    "options": ["Yes", "No", "Equal", "Cannot determine"],
+    "correct_option": "D",
+    "domain": "aptitude",
+    "topic": "logical reasoning",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 18,
+    "question_text": "How many handshakes are possible among 10 people if no pair is cyclic?",
+    "options": ["9", "10", "45", "90"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "logical reasoning",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 19,
+    "question_text": "In ORGANISATIONAL, if pairs (1st/2nd, etc.) are swapped, what is the 10th letter from the right?",
+    "options": ["G", "A", "I", "N"],
+    "correct_option": "C",
+    "domain": "aptitude",
+    "topic": "verbal/reasoning",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 20,
+    "question_text": "Planet Oz: 36hr day, 90min hour. Angle at 9:40?",
+    "options": ["29", "12", "67", "98"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "logical reasoning",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 21,
+    "question_text": "3 boys, 2 girls. D right of A. Girls not at extremes or middle. C at extreme. Who is right of E?",
+    "options": ["A", "B", "C", "B or C"],
+    "correct_option": "D",
+    "domain": "aptitude",
+    "topic": "logical reasoning",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 22,
+    "question_text": "24 red and 24 blue socks. Min socks to take to ensure a same-color pair?",
+    "options": ["2", "3", "25", "48"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "logical reasoning",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 23,
+    "question_text": "Find missing number: 3, 22, 7, 45, 15, ?, 31",
+    "options": ["54", "91", "60", "88"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "pattern/series",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 24,
+    "question_text": "Series: 1, 2, 3, 7, 7, 22, 15, 67, ... what number comes before 63?",
+    "options": ["31", "202", "15", "67"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "pattern/series",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 25,
+    "question_text": "Jumbled letters RGTEI category?",
+    "options": ["Town", "Vegetable", "Animal", "Bird"],
+    "correct_option": "C",
+    "domain": "aptitude",
+    "topic": "pattern/series",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 26,
+    "question_text": "Jumbled letters RAPETEKA category?",
+    "options": ["Bird", "City", "Sweet", "Fruit"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "pattern/series",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 27,
+    "question_text": "Odd one out: malloc, calloc, free, realloc",
+    "options": ["malloc", "calloc", "free", "realloc"],
+    "correct_option": "free",
+    "domain": "aptitude",
+    "topic": "odd-one-out",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 28,
+    "question_text": "Series: 13, 14, 27, 30, 55, 62, ?, 126",
+    "options": ["111", "115", "120", "108"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "pattern/series",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 29,
+    "question_text": "Series: 3, 12, 7, 26, 15, ?",
+    "options": ["30", "45", "54", "62"],
+    "correct_option": "C",
+    "domain": "aptitude",
+    "topic": "pattern/series",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 30,
+    "question_text": "Odd one out: Windows, Oracle, Linux, Unix",
+    "options": ["Windows", "Oracle", "Linux", "Unix"],
+    "correct_option": "Oracle",
+    "domain": "aptitude",
+    "topic": "odd-one-out",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 31,
+    "question_text": "If x/2y = 2, find (3x + 8y) / (x - 2y).",
+    "options": ["10", "5", "2", "8"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 32,
+    "question_text": "Which smallest number divides 2880 to make it a perfect square?",
+    "options": ["6", "5", "4", "3"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 33,
+    "question_text": "Ratio of ages of X and Y is 5:7. After how many years is it 7:9?",
+    "options": ["2", "3", "5", "Values not given"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 34,
+    "question_text": "Distance between North 37km, Left 2km, Right 17km, Right 2km starting/ending points?",
+    "options": ["54km", "37km", "20km", "60km"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "logical reasoning",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 35,
+    "question_text": "A has 141 yards long roll. Takes 2 sec to cut 1 yard piece. Total time for 141 pieces?",
+    "options": ["280", "282", "141", "242"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 36,
+    "question_text": "John buys cycle for $31, gives $35 cheque. Cheque bounces. CP of cycle is $19. Loss for shopkeeper?",
+    "options": ["$23", "$31", "$19", "$35"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 37,
+    "question_text": "A person has to make 146 pieces of a bar. Takes 4 sec to cut a piece. Total time?",
+    "options": ["580", "584", "576", "600"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 38,
+    "question_text": "Ages ratio 4:5. Sum is 55. Ratio after 2 years?",
+    "options": ["5:7", "6:7", "5:6", "1:2"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 39,
+    "question_text": "20 men shake hands. Max handshakes without cyclic handshakes?",
+    "options": ["190", "200", "210", "400"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "logical reasoning",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 40,
+    "question_text": "If a lady has 3 daughters and age difference is 3, eldest is 3x youngest. Eldest age?",
+    "options": ["15", "18", "12", "9"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 41,
+    "question_text": "If 1/8th of tank B is filled in 22 hours, time to fill full tank?",
+    "options": ["176", "154", "132", "198"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 42,
+    "question_text": "If a man walks distance at 5kmph and back. Average speed?",
+    "options": ["5", "4", "4.44", "Cannot determine"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 43,
+    "question_text": "If ratio of ages of 2 people is 6:6 and sum is 44. Ratio after 8 years?",
+    "options": ["8:7", "7:8", "1:1", "None"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 44,
+    "question_text": "If 1/2 of number is 3x more than 1/6 of same number, find number.",
+    "options": ["9", "18", "27", "36"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 45,
+    "question_text": "If 30 cans have one poisoned, and mice die in 14 hours. Mice needed to find poison in 24 hours?",
+    "options": ["5", "6", "30", "15"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "logical reasoning",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 46,
+    "question_text": "If a and b are mixed in 3:5 and b, c in 8:5. Mixture is 35 litres. Amount of b?",
+    "options": ["15.73", "14.8", "20", "18"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 47,
+    "question_text": "If we subtract number with y, we get 4 increase of number once divided by y. Find number.",
+    "options": ["12", "10", "8", "6"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 48,
+    "question_text": "If total wheels are 182 (4-wheelers and bicycles), possible bicycles?",
+    "options": ["19", "20", "18", "17"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 49,
+    "question_text": "Series: 8, 6, 17, 14, 35, 30, 71, _",
+    "options": ["62", "60", "66", "143"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "pattern/series",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 50,
+    "question_text": "If 20 men and 20 women dance, can 2 men dance with same woman?",
+    "options": ["Never", "Always", "Possible", "Sometimes"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "logical reasoning",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 51,
+    "question_text": "If a man goes North 3 miles, West 4 miles. Distance from start?",
+    "options": ["5", "7", "1", "12"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 52,
+    "question_text": "If 1! + 2! + ... 50! = 3 * 10^64?",
+    "options": ["True", "False", "Cannot determine", "None"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 53,
+    "question_text": "If a box is 9x10x3 using 3-cubic cubes. Min cubes?",
+    "options": ["90", "270", "30", "10"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 54,
+    "question_text": "If a boy gets 74 average for 7 subjects and 79 in 8th. New average?",
+    "options": ["74.625", "75", "76", "74.5"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 55,
+    "question_text": "If a train travels A to B at 24kmph and back at 36kmph. Average speed?",
+    "options": ["28.8", "30", "32", "29"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 56,
+    "question_text": "If youngest of 7 children is a boy, probability all are boys?",
+    "options": ["1/64", "1/128", "1/32", "1/2"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "logical reasoning",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 57,
+    "question_text": "If a toy train makes 10 sounds and defective makes 2. Probability same sound 3 times consecutively?",
+    "options": ["1/8", "1/4", "1/16", "1/32"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "logical reasoning",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 58,
+    "question_text": "If the three sides of triangle are 16, 14, 21. Area of square generated from same rope?",
+    "options": ["162.56", "170", "150", "None"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 59,
+    "question_text": "If equation is 4x+6y-2z=32. Difference between x and z intercept?",
+    "options": ["8", "16", "4", "None"],
+    "correct_option": "D",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 60,
+    "question_text": "If Ferrari is 3x faster than Mercedes (35kmph) and travels 490km. Time taken?",
+    "options": ["4.6", "4", "5", "None"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 61,
+    "question_text": "If a father has 7 pennys, 1 watermelon=1p, 2 oranges=1p, 3 grapes=1p. Equal share for 3 sons?",
+    "options": ["1 watermelon, 2 oranges, 1 grape", "2 watermelons, 1 orange, 1 grape", "All grapes", "None"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "logical reasoning",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 62,
+    "question_text": "If a man goes north 37km, left 2km, right 17km, right 2km. Distance from start?",
+    "options": ["54", "37", "20", "60"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "logical reasoning",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 63,
+    "question_text": "If ticket ranges 1p to 31p. Min coins needed for exact change?",
+    "options": ["5", "6", "31", "32"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 64,
+    "question_text": "If a coin is missing and captains use dice (1-6). Solution for fair toss?",
+    "options": ["Even=Win, Odd=Lose", "Higher number wins", "None", "Roll again"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "logical reasoning",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 65,
+    "question_text": "If a block has 10,9,5 size. Unit cubes needed?",
+    "options": ["450", "100", "50", "None"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 66,
+    "question_text": "If 23 people shake hands in pair of cyclic sequence. Handshakes?",
+    "options": ["22", "23", "45", "None"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "logical reasoning",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 67,
+    "question_text": "If 1/3 of number is 5 more than 1/6th. Number?",
+    "options": ["30", "15", "60", "None"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 68,
+    "question_text": "If total wheels are 58 (4-wheelers and bicycles). Bicycles?",
+    "options": ["7", "10", "12", "None"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "quantitative",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 69,
+    "question_text": "If youngest of 6 children is a boy, probability all are boys?",
+    "options": ["1/32", "1/64", "1/16", "None"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "logical reasoning",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 70,
+    "question_text": "If a man goes 50km North, left 40km, then right. Direction?",
+    "options": ["North", "South", "East", "West"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "logical reasoning",
+    "difficulty": "easy"
+  }
+]
