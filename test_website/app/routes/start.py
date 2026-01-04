@@ -9,12 +9,15 @@ from app.test_engine.generator import generate_question_ids
 
 router = APIRouter()
 
+
 @router.post("/start")
 def start_test():
     session_id = str(uuid4())
 
+    # Generate test
     question_ids = generate_question_ids()
 
+    # Persist session
     conn = get_connection()
     cur = conn.cursor()
 
@@ -30,12 +33,29 @@ def start_test():
     cur.close()
     conn.close()
 
+    # Store in-memory state
     SESSION_STORE[session_id] = SessionState(
         session_id=session_id,
         question_ids=question_ids
     )
 
-    response = RedirectResponse(url="/question-list", status_code=302)
-    response.set_cookie("session_id", session_id, httponly=True)
+    # Redirect to question list (PRG pattern)
+    response = RedirectResponse(
+        url="/question-list",
+        status_code=303
+    )
+
+    response.set_cookie(
+        key="session_id",
+        value=session_id,
+        httponly=True,
+        samesite="lax",
+        path="/"
+    )
+
+    # Prevent browser caching
+    response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
 
     return response

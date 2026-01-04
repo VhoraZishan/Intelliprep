@@ -4,11 +4,13 @@ from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
 from app.test_engine.state import SESSION_STORE
-from app.routes import start, question, submit, question_list
+from app.routes import start, question, question_list, submit
 
 app = FastAPI(title="IntelliPrep Test Website")
 
-# Templates & static
+# ----------------------
+# Templates & Static
+# ----------------------
 templates = Jinja2Templates(directory="app/templates")
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
@@ -20,15 +22,25 @@ app.mount("/static", StaticFiles(directory="app/static"), name="static")
 def home(request: Request):
     session_id = request.cookies.get("session_id")
 
-    # Active session → resume test
+    # Resume active test
     if session_id and session_id in SESSION_STORE:
-        return RedirectResponse("/question-list")
+        response = RedirectResponse(
+            url="/question-list",
+            status_code=303
+        )
+    else:
+        # Fresh start
+        response = templates.TemplateResponse(
+            "start.html",
+            {"request": request}
+        )
 
-    # No session → start page
-    return templates.TemplateResponse(
-        "start.html",
-        {"request": request}
-    )
+    # Prevent browser caching (important for back-button safety)
+    response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+
+    return response
 
 
 # ----------------------

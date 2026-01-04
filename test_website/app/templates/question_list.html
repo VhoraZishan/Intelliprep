@@ -1,31 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Question List</title>
   <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
+  <div class="page-container">
+    <div class="card">
 
-  <h2>Select a Question</h2>
+      <h2 class="title">Question List</h2>
+      <p class="subtitle">
+        Attempt questions in any order. Each question can be attempted only once.
+      </p>
 
-  <div class="question-grid">
-  {% for i in range(total_questions) %}
-    {% if i in attempted_indexes %}
-      <span class="question-btn attempted">
-        Q{{ i + 1 }}
-      </span>
-    {% else %}
-      <a href="/question/{{ i }}" class="question-btn">
-        Q{{ i + 1 }}
-      </a>
-    {% endif %}
-  {% endfor %}
-</div>
+      <div class="progress-info">
+        Attempted: <b>{{ attempted_count }}</b> / {{ total_questions }}
+      </div>
+
+      <div class="question-grid">
+        {% for i in range(total_questions) %}
+          {% if i in attempted_indexes %}
+            <span class="question-btn attempted">
+              Q{{ i + 1 }}
+            </span>
+          {% else %}
+            <a href="/question/{{ i }}" class="question-btn">
+              Q{{ i + 1 }}
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- SUBMIT FORM -->
+      <form
+  method="post"
+  action="/submit"
+  class="submit-form"
+  id="submitForm"
+  data-attempted="{{ attempted_count }}"
+  data-total="{{ total_questions }}"
+>
+  <button type="submit" class="primary-btn">
+    Submit Test
+  </button>
+</form>
 
 
-  <form method="post" action="/submit" style="margin-top: 30px;">
-    <button type="submit">Submit Test</button>
-  </form>
+    </div>
+  </div>
+
+  <!-- ⚠️ WARNING POPUP LOGIC -->
+  <script>
+  const form = document.getElementById("submitForm");
+
+  const attempted = parseInt(form.dataset.attempted, 10);
+  const total = parseInt(form.dataset.total, 10);
+
+  form.addEventListener("submit", function (e) {
+    if (attempted < total) {
+      const remaining = total - attempted;
+
+      const confirmSubmit = confirm(
+        "You still have " + remaining + " unanswered question(s).\n\nAre you sure you want to submit the test?"
+      );
+
+      if (!confirmSubmit) {
+        e.preventDefault();
+      }
+    }
+  });
+</script>
+
 
 </body>
 </html>

@@ -1,15 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Test Complete</title>
+  <meta charset="UTF-8">
+  <title>Test Completed</title>
+  <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
+  <div class="page-container">
+    <div class="card center">
 
-  <h1>Test Completed</h1>
+      <h1 class="title">Test Completed</h1>
 
-  <p>Thank you for taking the test.</p>
+      <p class="subtitle">
+        Thank you for taking the IntelliPrep assessment.
+      </p>
 
-  <p>Your score: {{ score_percent }}%</p>
+      <div class="score-box">
+        <p>Your Score</p>
+        <h2>{{ score_percent }}%</h2>
+      </div>
 
+      <p class="info-text">
+        You may now safely close this window.
+      </p>
+
+    </div>
+  </div>
 </body>
 </html>

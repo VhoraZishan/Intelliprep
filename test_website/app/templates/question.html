@@ -1,28 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Question {{ index + 1 }}</title>
   <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
+  <div class="page-container">
+    <div class="card">
 
-  <h2>Question {{ index + 1 }}</h2>
+      <h2 class="title">
+        Question {{ index + 1 }} / {{ total_questions }}
+      </h2>
 
-  <p>{{ question_text }}</p>
+      <p class="question-text">
+        {{ question_text }}
+      </p>
 
-  <form method="post" action="/question/{{ index }}">
-    {% for key, value in options.items() %}
-      <div>
-        <input type="radio" name="selected_option" value="{{ key }}" required>
-        <label>{{ key }}. {{ value }}</label>
+      {% if is_attempted %}
+        <p class="info-text">
+          This question has already been attempted. Your answer is locked.
+        </p>
+      {% endif %}
+
+      <form method="post" action="/question/{{ index }}" class="question-form">
+        {% for key, value in options.items() %}
+          <label class="option">
+            <input
+              type="radio"
+              name="selected_option"
+              value="{{ key }}"
+              {% if is_attempted %}disabled{% endif %}
+              {% if selected_option == key %}checked{% endif %}
+              {% if not is_attempted %}required{% endif %}
+            >
+            <span>{{ key }}. {{ value }}</span>
+          </label>
+        {% endfor %}
+
+        <button
+          type="submit"
+          class="primary-btn"
+          {% if is_attempted %}disabled{% endif %}
+        >
+          Submit Answer
+        </button>
+      </form>
+
+      <div class="nav-bar">
+        {% if index > 0 %}
+          <a href="/question/{{ index - 1 }}" class="nav-btn">
+            ← Previous
+          </a>
+        {% else %}
+          <span class="nav-btn disabled">← Previous</span>
+        {% endif %}
+
+        <a href="/question-list" class="nav-btn secondary">
+          Question List
+        </a>
+
+        {% if index < total_questions - 1 %}
+          <a href="/question/{{ index + 1 }}" class="nav-btn">
+            Next →
+          </a>
+        {% else %}
+          <span class="nav-btn disabled">Next →</span>
+        {% endif %}
       </div>
-    {% endfor %}
 
-    <button type="submit">Submit Answer</button>
-  </form>
-
-  <br>
-  <a href="/question-list">Back to Question List</a>
-
+    </div>
+  </div>
 </body>
 </html>

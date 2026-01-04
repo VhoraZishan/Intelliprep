@@ -1,23 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>IntelliPrep Test</title>
+  <meta charset="UTF-8">
+  <title>IntelliPrep Assessment</title>
   <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
-  <h1>IntelliPrep Assessment</h1>
+  <div class="page-container">
 
-  <p>
-  • The test contains <b>25 questions</b>.<br>
-  • You may choose questions in any order.<br>
-  • <b>Each question can be attempted only once.</b><br>
-  • Once an answer is submitted, it <b>cannot be changed</b>.<br>
-  • Attempted questions cannot be opened again.
-</p>
+    <div class="card">
 
+      <h1 class="title">IntelliPrep Assessment</h1>
+      <p class="subtitle">
+        Skill evaluation test • Aptitude & Technical
+      </p>
 
-  <form method="post" action="/start">
-    <button type="submit">Start Test</button>
-  </form>
+      <hr>
+
+      <div class="section">
+        <h3>Test Overview</h3>
+        <ul>
+          <li>Total questions: <b>25</b></li>
+          <li>Question types: <b>MCQs (single correct)</b></li>
+          <li>Sections: <b>Aptitude</b> and <b>Technical</b></li>
+          <li>Difficulty: <b>Mixed</b></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>Attempt Rules</h3>
+        <ul>
+          <li>You may attempt questions in <b>any order</b>.</li>
+          <li>Each question can be attempted <b>only once</b>.</li>
+          <li>Once submitted, an answer <b>cannot be changed</b>.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>Data Collected</h3>
+        <ul>
+          <li>Your selected answers</li>
+          <li>Correct / incorrect responses</li>
+          <li>Time spent per question</li>
+          <li>Overall test score</li>
+        </ul>
+      </div>
+
+      <div class="section note">
+        <p>
+          Please ensure a stable internet connection before starting.
+          Once the test is started, refreshing or navigating back will not
+          allow reattempting submitted questions.
+        </p>
+      </div>
+
+      <form method="post" action="/start" class="start-form">
+        <button type="submit" class="primary-btn">
+          Start Test
+        </button>
+      </form>
+
+    </div>
+  </div>
+<script>
+  const params = new URLSearchParams(window.location.search);
+
+  if (params.get("error") === "invalid_session") {
+    alert("Your session has expired or is invalid.\n\nPlease start the test again.");
+  }
+</script>
+
 </body>
 </html>
