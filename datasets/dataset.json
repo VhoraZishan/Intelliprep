@@ -1,0 +1,632 @@
+[
+  {
+    "question_id": 1,
+    "question_text": "If a sum of money doubles itself in 8 years at simple interest, what is the rate of interest per annum?",
+    "options": ["10.5%", "12.5%", "15%", "8%"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "Quantitative aptitude",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 2,
+    "question_text": "A train 150m long is running at a speed of 54 km/hr. How much time will it take to cross a platform 210m long?",
+    "options": ["20 seconds", "24 seconds", "18 seconds", "30 seconds"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "Quantitative aptitude",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 3,
+    "question_text": "What is the unit digit in the product (7^95 - 3^58)?",
+    "options": ["0", "4", "6", "7"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "Quantitative aptitude",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 4,
+    "question_text": "A and B can complete a work in 15 days and 10 days respectively. They started together but B left after 2 days. In how many days can A finish the remaining work?",
+    "options": ["10 days", "12 days", "8 days", "9 days"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "Quantitative aptitude",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 5,
+    "question_text": "The ratio of ages of Ravi and Hema is 4:3. After 6 years, Ravi's age will be 26 years. What is Hema's present age?",
+    "options": ["12 years", "15 years", "18 years", "21 years"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "Quantitative aptitude",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 6,
+    "question_text": "Find the average of all prime numbers between 30 and 50.",
+    "options": ["39.8", "38", "41", "39"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "Quantitative aptitude",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 7,
+    "question_text": "If 20% of a = b, then b% of 20 is the same as:",
+    "options": ["4% of a", "5% of a", "20% of a", "None of these"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "Quantitative aptitude",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 8,
+    "question_text": "A shopkeeper sells an article at a loss of 10%. Had he sold it for Rs. 90 more, he would have gained 5%. Find the cost price.",
+    "options": ["Rs. 500", "Rs. 600", "Rs. 750", "Rs. 800"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "Quantitative aptitude",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 9,
+    "question_text": "Two numbers are in the ratio 3:5. If 9 is subtracted from each, they are in the ratio 12:23. The smaller number is:",
+    "options": ["27", "33", "49", "55"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "Quantitative aptitude",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 10,
+    "question_text": "In how many ways can the letters of the word 'LEADER' be arranged?",
+    "options": ["720", "360", "120", "144"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "Quantitative aptitude",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 11,
+    "question_text": "A cistern can be filled by a tap in 4 hours while it can be emptied by another tap in 9 hours. If both taps are opened simultaneously, then after how much time will the cistern get filled?",
+    "options": ["7 hours", "7.2 hours", "8 hours", "9.1 hours"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "Quantitative aptitude",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 12,
+    "question_text": "Find the compound interest on Rs. 10,000 for 2 years at 10% per annum compounded annually.",
+    "options": ["Rs. 2000", "Rs. 2100", "Rs. 1100", "Rs. 2200"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "Quantitative aptitude",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 13,
+    "question_text": "Pointing to a photograph, Vipul said, 'She is the daughter of my grandfather's only son.' How is Vipul related to the girl in the photograph?",
+    "options": ["Father", "Brother", "Cousin", "Uncle"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "Logical reasoning",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 14,
+    "question_text": "Statements: All bags are pockets. All pockets are pouches. Conclusions: I. All bags are pouches. II. Some pouches are bags.",
+    "options": ["Only I follows", "Only II follows", "Either I or II follows", "Both I and II follow"],
+    "correct_option": "D",
+    "domain": "aptitude",
+    "topic": "Logical reasoning",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 15,
+    "question_text": "In a certain code, TEACHER is written as VGCEJGT. How is CHILDREN written in that code?",
+    "options": ["EJKNEGTP", "EGKNFITP", "EJKNFGTO", "EJKNFTGP"],
+    "correct_option": "D",
+    "domain": "aptitude",
+    "topic": "Logical reasoning",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 16,
+    "question_text": "If '+' means 'divided by', '-' means 'added to', 'x' means 'subtracted from' and '/' means 'multiplied by', then what is the value of 24 + 12 - 8 x 6 / 2?",
+    "options": ["-2", "15", "0", "-1"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "Logical reasoning",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 17,
+    "question_text": "Find the missing number: 4, 9, 25, 49, 121, ?",
+    "options": ["144", "169", "196", "225"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "Logical reasoning",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 18,
+    "question_text": "Six persons A, B, C, D, E and F are sitting in a circle facing the center. B is between F and D. E is between A and C. A is to the left of D. Who is between A and F?",
+    "options": ["B", "C", "D", "E"],
+    "correct_option": "D",
+    "domain": "aptitude",
+    "topic": "Logical reasoning",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 19,
+    "question_text": "A man walks 5 km towards South and then turns to the right. After walking 3 km he turns to the left and walks 5 km. Now in which direction is he from the starting place?",
+    "options": ["West", "South", "South-West", "North-East"],
+    "correct_option": "C",
+    "domain": "aptitude",
+    "topic": "Logical reasoning",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 20,
+    "question_text": "Which of the following does not belong to the group?",
+    "options": ["Zebra", "Lion", "Tiger", "Horse"],
+    "correct_option": "D",
+    "domain": "aptitude",
+    "topic": "Logical reasoning",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 21,
+    "question_text": "Statement: Should students take part in politics? Argument I: Yes, it helps in developing leadership qualities. Argument II: No, they should only study.",
+    "options": ["Only I is strong", "Only II is strong", "Either I or II is strong", "Neither I nor II is strong"],
+    "correct_option": "A",
+    "domain": "aptitude",
+    "topic": "Logical reasoning",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 22,
+    "question_text": "If 'Rain' is 'Water', 'Water' is 'Road', 'Road' is 'Cloud', 'Cloud' is 'Sky', 'Sky' is 'Sea' and 'Sea' is 'Path', where do aeroplanes fly?",
+    "options": ["Cloud", "Sky", "Sea", "Water"],
+    "correct_option": "C",
+    "domain": "aptitude",
+    "topic": "Logical reasoning",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 23,
+    "question_text": "Complete the series: 7, 10, 8, 11, 9, 12, ...",
+    "options": ["7", "10", "12", "13"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "Pattern / series / odd-one-out",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 24,
+    "question_text": "Find the odd one out: 3, 5, 11, 14, 17, 21",
+    "options": ["21", "17", "14", "3"],
+    "correct_option": "C",
+    "domain": "aptitude",
+    "topic": "Pattern / series / odd-one-out",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 25,
+    "question_text": "Find the missing term in the sequence: SCD, TEF, UGH, ____, WKL",
+    "options": ["CMN", "UJI", "VIJ", "IJT"],
+    "correct_option": "C",
+    "domain": "aptitude",
+    "topic": "Pattern / series / odd-one-out",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 26,
+    "question_text": "Identify the next number in the pattern: 2, 6, 12, 20, 30, 42, ...",
+    "options": ["50", "52", "56", "60"],
+    "correct_option": "C",
+    "domain": "aptitude",
+    "topic": "Pattern / series / odd-one-out",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 27,
+    "question_text": "Odd one out: Square, Rectangle, Triangle, Cube",
+    "options": ["Square", "Rectangle", "Triangle", "Cube"],
+    "correct_option": "D",
+    "domain": "aptitude",
+    "topic": "Pattern / series / odd-one-out",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 28,
+    "question_text": "Choose the word which is least like the other words in the group.",
+    "options": ["Copper", "Zinc", "Brass", "Aluminum"],
+    "correct_option": "C",
+    "domain": "aptitude",
+    "topic": "Basic verbal / reasoning",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 29,
+    "question_text": "Identify the relationship: Odometer is to Mileage as Compass is to ...",
+    "options": ["Speed", "Hiking", "Direction", "Needle"],
+    "correct_option": "C",
+    "domain": "aptitude",
+    "topic": "Basic verbal / reasoning",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 30,
+    "question_text": "Choose the synonym for 'ABANDON'.",
+    "options": ["Keep", "Forsake", "Adopt", "Believe"],
+    "correct_option": "B",
+    "domain": "aptitude",
+    "topic": "Basic verbal / reasoning",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 31,
+    "question_text": "Which of the following is the correct way to declare a constant in C?",
+    "options": ["const int x = 10;", "#define x 10", "Both A and B", "None of these"],
+    "correct_option": "C",
+    "domain": "technical",
+    "topic": "C language basics (syntax, control flow)",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 32,
+    "question_text": "What is the range of 'signed char' in C?",
+    "options": ["0 to 255", "-128 to 127", "-255 to 255", "0 to 127"],
+    "correct_option": "B",
+    "domain": "technical",
+    "topic": "C language basics (syntax, control flow)",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 33,
+    "question_text": "Which operator has the highest precedence in C?",
+    "options": ["*", "()", "++", "+"],
+    "correct_option": "B",
+    "domain": "technical",
+    "topic": "C language basics (syntax, control flow)",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 34,
+    "question_text": "What is the result of the expression 5 / 2 in C when using integers?",
+    "options": ["2.5", "2", "3", "Error"],
+    "correct_option": "B",
+    "domain": "technical",
+    "topic": "C language basics (syntax, control flow)",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 35,
+    "question_text": "Which of the following is not a valid loop in C?",
+    "options": ["for", "while", "do-while", "repeat-until"],
+    "correct_option": "D",
+    "domain": "technical",
+    "topic": "C language basics (syntax, control flow)",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 36,
+    "question_text": "What does the 'continue' statement do in C?",
+    "options": ["Exit the loop", "Skip the rest of the current iteration", "Restart the program", "Jump to a label"],
+    "correct_option": "B",
+    "domain": "technical",
+    "topic": "C language basics (syntax, control flow)",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 37,
+    "question_text": "A 'switch' statement in C can evaluate which types of data?",
+    "options": ["float and double", "int and char", "Only int", "Any data type"],
+    "correct_option": "B",
+    "domain": "technical",
+    "topic": "C language basics (syntax, control flow)",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 38,
+    "question_text": "What is the default return type of a function in C if not specified?",
+    "options": ["void", "float", "int", "char"],
+    "correct_option": "C",
+    "domain": "technical",
+    "topic": "C language basics (syntax, control flow)",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 39,
+    "question_text": "Which storage class has the shortest lifetime in C?",
+    "options": ["static", "extern", "register", "auto"],
+    "correct_option": "D",
+    "domain": "technical",
+    "topic": "C language basics (syntax, control flow)",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 40,
+    "question_text": "Which header file is required to use the 'printf' function?",
+    "options": ["<conio.h>", "<stdlib.h>", "<stdio.h>", "<string.h>"],
+    "correct_option": "C",
+    "domain": "technical",
+    "topic": "C language basics (syntax, control flow)",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 41,
+    "question_text": "In C, what is the size of an empty struct?",
+    "options": ["0 bytes", "1 byte", "4 bytes", "Undefined behavior"],
+    "correct_option": "D",
+    "domain": "technical",
+    "topic": "C language basics (syntax, control flow)",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 42,
+    "question_text": "Which keyword is used to prevent any changes to a variable within a C program?",
+    "options": ["immutable", "static", "const", "final"],
+    "correct_option": "C",
+    "domain": "technical",
+    "topic": "C language basics (syntax, control flow)",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 43,
+    "question_text": "What is the index of the first element in an array of size N?",
+    "options": ["1", "0", "N-1", "-1"],
+    "correct_option": "B",
+    "domain": "technical",
+    "topic": "Arrays & strings",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 44,
+    "question_text": "Which function is used to find the length of a string in C?",
+    "options": ["sizeof()", "length()", "strlen()", "strnlen()"],
+    "correct_option": "C",
+    "domain": "technical",
+    "topic": "Arrays & strings",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 45,
+    "question_text": "How do you initialize a string 'str' with the value 'Hello'?",
+    "options": ["char str[5] = \"Hello\";", "char str[] = \"Hello\";", "string str = \"Hello\";", "char str = 'Hello';"],
+    "correct_option": "B",
+    "domain": "technical",
+    "topic": "Arrays & strings",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 46,
+    "question_text": "What happens if you try to access an array element outside its bounds in C?",
+    "options": ["Compilation error", "Runtime exception", "Undefined behavior", "Returns 0"],
+    "correct_option": "C",
+    "domain": "technical",
+    "topic": "Arrays & strings",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 47,
+    "question_text": "Which of the following is the correct way to declare a 2D array in C?",
+    "options": ["int a[2,2];", "int a[2][2];", "int a(2,2);", "int a[2]2;"],
+    "correct_option": "B",
+    "domain": "technical",
+    "topic": "Arrays & strings",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 48,
+    "question_text": "Which function is used to compare two strings in C?",
+    "options": ["strcmp()", "strcmpi()", "strcompare()", "memcmp()"],
+    "correct_option": "A",
+    "domain": "technical",
+    "topic": "Arrays & strings",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 49,
+    "question_text": "What is the termination character for strings in C?",
+    "options": ["\\n", "\\t", "\\0", "\\s"],
+    "correct_option": "C",
+    "domain": "technical",
+    "topic": "Arrays & strings",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 50,
+    "question_text": "If char arr[] = \"A\", what is the result of sizeof(arr)?",
+    "options": ["1", "2", "4", "8"],
+    "correct_option": "B",
+    "domain": "technical",
+    "topic": "Arrays & strings",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 51,
+    "question_text": "What is the base address of an array?",
+    "options": ["Address of the first element", "Address of the last element", "The total size of the array", "None of these"],
+    "correct_option": "A",
+    "domain": "technical",
+    "topic": "Arrays & strings",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 52,
+    "question_text": "Which of the following correctly concatenates two strings 's1' and 's2'?",
+    "options": ["s1 + s2", "strcat(s1, s2)", "strcpy(s1, s2)", "stradd(s1, s2)"],
+    "correct_option": "B",
+    "domain": "technical",
+    "topic": "Arrays & strings",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 53,
+    "question_text": "A pointer is:",
+    "options": ["A variable that stores the value of another variable", "A variable that stores the address of another variable", "A keyword used to create a function", "A data type"],
+    "correct_option": "B",
+    "domain": "technical",
+    "topic": "Pointers / memory (basic concepts)",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 54,
+    "question_text": "What is a 'NULL' pointer in C?",
+    "options": ["A pointer that points to zero", "A pointer that points to a random location", "A pointer that points to the beginning of memory", "A pointer that points to nowhere"],
+    "correct_option": "D",
+    "domain": "technical",
+    "topic": "Pointers / memory (basic concepts)",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 55,
+    "question_text": "Which operator is used to get the value at the address stored in a pointer?",
+    "options": ["&", "*", "->", "."],
+    "correct_option": "B",
+    "domain": "technical",
+    "topic": "Pointers / memory (basic concepts)",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 56,
+    "question_text": "Which function is used for dynamic memory allocation in C?",
+    "options": ["alloc()", "malloc()", "new()", "create()"],
+    "correct_option": "B",
+    "domain": "technical",
+    "topic": "Pointers / memory (basic concepts)",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 57,
+    "question_text": "What is the size of a pointer in a 64-bit system?",
+    "options": ["4 bytes", "8 bytes", "2 bytes", "Depends on the data type it points to"],
+    "correct_option": "B",
+    "domain": "technical",
+    "topic": "Pointers / memory (basic concepts)",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 58,
+    "question_text": "What is a dangling pointer?",
+    "options": ["A pointer pointing to a freed memory location", "A pointer pointing to NULL", "An uninitialized pointer", "A pointer pointing to a global variable"],
+    "correct_option": "A",
+    "domain": "technical",
+    "topic": "Pointers / memory (basic concepts)",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 59,
+    "question_text": "What is the output of the following C code? \nint i = 5; \nprintf(\"%d %d %d\", i++, i++, i++);",
+    "options": ["5 6 7", "7 6 5", "Compiler Dependent", "5 5 5"],
+    "correct_option": "C",
+    "domain": "technical",
+    "topic": "Output-based / code tracing (C)",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 60,
+    "question_text": "What will be the output? \n#include <stdio.h>\nint main() {\n  int x = 10, y = 20;\n  if (x = y) printf(\"Equal\");\n  else printf(\"Not Equal\");\n  return 0;\n}",
+    "options": ["Equal", "Not Equal", "Runtime Error", "Compilation Error"],
+    "correct_option": "A",
+    "domain": "technical",
+    "topic": "Output-based / code tracing (C)",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 61,
+    "question_text": "What will be the output? \n#include <stdio.h>\nint main() {\n  int a[] = {1, 2, 3};\n  int *p = a;\n  printf(\"%d\", *(p+1));\n  return 0;\n}",
+    "options": ["1", "2", "3", "Address of 2"],
+    "correct_option": "B",
+    "domain": "technical",
+    "topic": "Output-based / code tracing (C)",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 62,
+    "question_text": "What will the following code print? \nint main() {\n  int x = 5;\n  if (x < 10)\n    if (x > 5)\n      printf(\"A\");\n    else\n      printf(\"B\");\n  return 0;\n}",
+    "options": ["A", "B", "Nothing", "Compiler error"],
+    "correct_option": "B",
+    "domain": "technical",
+    "topic": "Output-based / code tracing (C)",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 63,
+    "question_text": "Predict the output: \n#include <stdio.h>\nint main() {\n  int x = 0;\n  for (; x < 3; x++) ;\n  printf(\"%d\", x);\n  return 0;\n}",
+    "options": ["0", "1", "2", "3"],
+    "correct_option": "D",
+    "domain": "technical",
+    "topic": "Output-based / code tracing (C)",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 64,
+    "question_text": "What will be the output of \nprintf(\"%d\", sizeof(printf(\"Hello\")));?",
+    "options": ["5", "2", "4", "Depends on platform"],
+    "correct_option": "C",
+    "domain": "technical",
+    "topic": "Output-based / code tracing (C)",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 65,
+    "question_text": "Output of: \nint a = 10; \nvoid f() { int a = 20; } \nint main() { f(); printf(\"%d\", a); return 0; }",
+    "options": ["10", "20", "Trash value", "Error"],
+    "correct_option": "A",
+    "domain": "technical",
+    "topic": "Output-based / code tracing (C)",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 66,
+    "question_text": "What is the output? \n#include <stdio.h>\nint main() {\n  char *ptr = \"Placement\";\n  printf(\"%c\", *&*ptr);\n  return 0;\n}",
+    "options": ["P", "Placement", "Address", "Error"],
+    "correct_option": "A",
+    "domain": "technical",
+    "topic": "Output-based / code tracing (C)",
+    "difficulty": "hard"
+  },
+  {
+    "question_id": 67,
+    "question_text": "What is the time complexity of searching an element in a balanced binary search tree?",
+    "options": ["O(1)", "O(n)", "O(log n)", "O(n log n)"],
+    "correct_option": "C",
+    "domain": "technical",
+    "topic": "Time complexity / basic concepts",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 68,
+    "question_text": "Which notation is used to represent the upper bound of an algorithm's running time?",
+    "options": ["Big Omega", "Big Theta", "Big O", "Little o"],
+    "correct_option": "C",
+    "domain": "technical",
+    "topic": "Time complexity / basic concepts",
+    "difficulty": "easy"
+  },
+  {
+    "question_id": 69,
+    "question_text": "What is the time complexity of Quick Sort in the worst case?",
+    "options": ["O(n log n)", "O(n)", "O(n^2)", "O(log n)"],
+    "correct_option": "C",
+    "domain": "technical",
+    "topic": "Time complexity / basic concepts",
+    "difficulty": "medium"
+  },
+  {
+    "question_id": 70,
+    "question_text": "If an algorithm's time complexity is O(1), it is called:",
+    "options": ["Linear time", "Logarithmic time", "Constant time", "Exponential time"],
+    "correct_option": "C",
+    "domain": "technical",
+    "topic": "Time complexity / basic concepts",
+    "difficulty": "easy"
+  }
+]
