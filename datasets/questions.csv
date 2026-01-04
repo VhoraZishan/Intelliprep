@@ -43,7 +43,7 @@ question_id,question_text,option_a,option_b,option_c,option_d,correct_option,dom
 42,Which keyword is used to prevent any changes to a variable within a C program?,immutable,static,const,final,C,technical,"C language basics (syntax, control flow)",easy,TRUE
 43,What is the index of the first element in an array of size N?,1,0,N-1,-1,B,technical,Arrays & strings,easy,TRUE
 44,Which function is used to find the length of a string in C?,sizeof(),length(),strlen(),strnlen(),C,technical,Arrays & strings,easy,TRUE
-45,How do you initialize a string 'str' with the value 'Hello'?,char str[5] = "Hello";,char str[] = "Hello";,string str = "Hello";,char str = 'Hello';,B,technical,Arrays & strings,medium,TRUE
+45,How do you initialize a string 'str' with the value 'Hello'?,"char str[] = ""Hello"";","string str = ""Hello"";",B,technical,Arrays & strings,medium,TRUE
 46,What happens if you try to access an array element outside its bounds in C?,Compilation error,Runtime exception,Undefined behavior,Returns 0,C,technical,Arrays & strings,medium,TRUE
 47,Which of the following is the correct way to declare a 2D array in C?,"int a[2,2];",int a[2][2];,"int a(2,2);",int a[2]2;,B,technical,Arrays & strings,easy,TRUE
 48,Which function is used to compare two strings in C?,strcmp(),strcmpi(),strcompare(),memcmp(),A,technical,Arrays & strings,medium,TRUE
@@ -111,3 +111,4 @@ int main() {
 68,Which notation is used to represent the upper bound of an algorithm's running time?,Big Omega,Big Theta,Big O,Little o,C,technical,Time complexity / basic concepts,easy,TRUE
 69,What is the time complexity of Quick Sort in the worst case?,O(n log n),O(n),O(n^2),O(log n),C,technical,Time complexity / basic concepts,medium,TRUE
 70,"If an algorithm's time complexity is O(1), it is called:",Linear time,Logarithmic time,Constant time,Exponential time,C,technical,Time complexity / basic concepts,easy,TRUE
+
