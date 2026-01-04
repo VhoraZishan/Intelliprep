@@ -3,8 +3,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_SERVICE_KEY = os.getenv("SUPABASE_SERVICE_KEY")
+DATABASE_URL = os.getenv("DATABASE_URL")
 
-if not SUPABASE_URL or not SUPABASE_SERVICE_KEY:
-    raise RuntimeError("Missing Supabase environment variables")
+if not DATABASE_URL:
+    raise RuntimeError("DATABASE_URL not set")

@@ -1,10 +1,8 @@
 import psycopg2
-from app.config import SUPABASE_URL, SUPABASE_SERVICE_KEY
+from app.config import DATABASE_URL
 
 def get_connection():
     return psycopg2.connect(
-        SUPABASE_URL.replace("https://", ""),
-        user="postgres",
-        password=SUPABASE_SERVICE_KEY,
+        DATABASE_URL,
         sslmode="require"
     )
