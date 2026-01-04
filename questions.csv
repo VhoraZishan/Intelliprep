@@ -1,4 +1,4 @@
-question_id,question_text,options/0,options/1,options/2,options/3,correct_option,domain,topic,difficulty,is_active
+question_id,question_text,option_a,option_b,option_c,option_d,correct_option,domain,topic,difficulty,is_active
 1,"If a sum of money doubles itself in 8 years at simple interest, what is the rate of interest per annum?",10.50%,12.50%,15%,8%,B,aptitude,Quantitative aptitude,easy,TRUE
 2,A train 150m long is running at a speed of 54 km/hr. How much time will it take to cross a platform 210m long?,20 seconds,24 seconds,18 seconds,30 seconds,B,aptitude,Quantitative aptitude,medium,TRUE
 3,What is the unit digit in the product (7^95 - 3^58)?,0,4,6,7,B,aptitude,Quantitative aptitude,hard,TRUE
@@ -43,7 +43,7 @@ question_id,question_text,options/0,options/1,options/2,options/3,correct_option
 42,Which keyword is used to prevent any changes to a variable within a C program?,immutable,static,const,final,C,technical,"C language basics (syntax, control flow)",easy,TRUE
 43,What is the index of the first element in an array of size N?,1,0,N-1,-1,B,technical,Arrays & strings,easy,TRUE
 44,Which function is used to find the length of a string in C?,sizeof(),length(),strlen(),strnlen(),C,technical,Arrays & strings,easy,TRUE
-45,How do you initialize a string 'str' with the value 'Hello'?,"char str[5] = ""Hello"";","char str[] = ""Hello"";","string str = ""Hello"";",char str = 'Hello';,B,technical,Arrays & strings,medium,TRUE
+45,How do you initialize a string 'str' with the value 'Hello'?,char str[5] = "Hello";,char str[] = "Hello";,string str = "Hello";,char str = 'Hello';,B,technical,Arrays & strings,medium,TRUE
 46,What happens if you try to access an array element outside its bounds in C?,Compilation error,Runtime exception,Undefined behavior,Returns 0,C,technical,Arrays & strings,medium,TRUE
 47,Which of the following is the correct way to declare a 2D array in C?,"int a[2,2];",int a[2][2];,"int a(2,2);",int a[2]2;,B,technical,Arrays & strings,easy,TRUE
 48,Which function is used to compare two strings in C?,strcmp(),strcmpi(),strcompare(),memcmp(),A,technical,Arrays & strings,medium,TRUE
