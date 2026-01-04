@@ -1,47 +1,49 @@
-from fastapi import APIRouter, Request, HTTPException
+from fastapi import APIRouter, Request
 from fastapi.templating import Jinja2Templates
-from fastapi.responses import RedirectResponse  
-from app.test_engine.state import SESSION_STORE
+from fastapi.responses import RedirectResponse
 from app.db import get_connection
 
 router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
 
-
 @router.get("/question-list")
 def question_list(request: Request):
     session_id = request.cookies.get("session_id")
 
-    # Validate session
-    if not session_id or session_id not in SESSION_STORE:
-        return RedirectResponse(
-            url="/?error=invalid_session",
-            status_code=303
-        )
+    if not session_id:
+        return RedirectResponse("/?error=invalid_session", status_code=303)
 
-
-    state = SESSION_STORE[session_id]
-    question_ids = state.question_ids
-
-    # Fetch attempted questions from DB
     conn = get_connection()
     cur = conn.cursor()
 
+    # Validate active session
     cur.execute(
         """
-        SELECT question_id
-        FROM attempts
-        WHERE session_id = %s;
+        SELECT question_ids
+        FROM sessions
+        WHERE id = %s AND status = 'IN_PROGRESS';
         """,
         (session_id,),
     )
+    row = cur.fetchone()
 
-    attempted_ids = {row[0] for row in cur.fetchall()}
+    if not row:
+        cur.close()
+        conn.close()
+        return RedirectResponse("/?error=invalid_session", status_code=303)
+
+    question_ids = row[0]
+
+    # Fetch attempted questions
+    cur.execute(
+        "SELECT question_id FROM attempts WHERE session_id = %s;",
+        (session_id,),
+    )
+    attempted_ids = {r[0] for r in cur.fetchall()}
 
     cur.close()
     conn.close()
 
-    # Convert question IDs → indexes
     attempted_indexes = {
         question_ids.index(qid)
         for qid in attempted_ids
@@ -58,9 +60,5 @@ def question_list(request: Request):
         },
     )
 
-    # Prevent browser caching (important)
-    response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
-    response.headers["Pragma"] = "no-cache"
-    response.headers["Expires"] = "0"
-
+    response.headers["Cache-Control"] = "no-store"
     return response

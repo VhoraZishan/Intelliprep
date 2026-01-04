@@ -142,3 +142,50 @@ button:disabled {
     width: auto;
   }
 }
+/* ---------- NAV BAR ---------- */
+.nav-bar {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: #e9edf3;
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+  text-align: center;
+}
+
+.nav-btn:hover {
+  background: #dce3ef;
+}
+
+.nav-btn.secondary {
+  background: #f0f4ff;
+}
+
+.nav-btn.disabled {
+  background: #eee;
+  color: #999;
+  cursor: not-allowed;
+}
+
+/* ---------- QUESTION FORM ---------- */
+.question-form {
+  margin-bottom: 10px;
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 600px) {
+  .nav-bar {
+    flex-direction: column;
+  }
+
+  .nav-btn {
+    width: 100%;
+  }
+}
