@@ -5,18 +5,19 @@
   <title>IntelliPrep Assessment</title>
   <link rel="stylesheet" href="/static/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
 
 <body>
   <div class="page-container">
-
     <div class="card">
 
       <h1 class="title">IntelliPrep Assessment</h1>
       <p class="subtitle">
         Skill evaluation test • Aptitude & Technical
       </p>
+
+      <!-- ERROR / INFO MESSAGE -->
+      <div id="message-box" class="info-box hidden"></div>
 
       <hr>
 
@@ -52,25 +53,88 @@
       <div class="section note">
         <p>
           Please ensure a stable internet connection before starting.
-          Once the test is started, refreshing or navigating back will not
-          allow reattempting submitted questions.
+          If your test expires, you will need to start again.
         </p>
       </div>
 
-      <form method="post" action="/start" class="start-form">
-        <button type="submit" class="primary-btn">
+      <form method="post" action="/start" class="start-form" id="startForm">
+        <button type="submit" class="primary-btn" id="startBtn">
           Start Test
         </button>
       </form>
 
     </div>
   </div>
-<script>
-  const params = new URLSearchParams(window.location.search);
 
-  if (params.get("error") === "invalid_session") {
-    alert("Your session has expired or is invalid.\n\nPlease start the test again.");
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const reason = params.get("reason");
+
+    const box = document.getElementById("message-box");
+    const startBtn = document.getElementById("startBtn");
+    const form = document.getElementById("startForm");
+
+    if (reason) {
+      let message = "";
+      let type = "info";
+
+      switch (reason) {
+        case "invalid_session":
+          message = "Your previous session was invalid or cleared. Please start a new test.";
+          break;
+
+        case "session_expired":
+          message = "Your test session expired due to time limit. Please start again.";
+          type = "warning";
+          break;
+
+        default:
+          message = "Please start the test.";
+      }
+
+      box.textContent = message;
+      box.classList.remove("hidden");
+      box.classList.add(type);
+    }
+
+    // Prevent double submit + show loading feedback
+    form.addEventListener("submit", () => {
+      startBtn.disabled = true;
+      startBtn.textContent = "Starting…";
+    });
+  </script>
+  <!-- GLOBAL LOADING OVERLAY -->
+<div id="loadingOverlay" class="loading-overlay">
+  <div class="loading-box">
+    <div class="spinner"></div>
+    <div class="loading-text">Please wait…</div>
+  </div>
+</div>
+
+<script>
+  const overlay = document.getElementById("loadingOverlay");
+
+  function showLoader(text) {
+    if (text) {
+      const label = overlay.querySelector(".loading-text");
+      if (label) label.textContent = text;
+    }
+    overlay.classList.add("active");
   }
+
+  // Hook all form submissions
+  document.querySelectorAll("form").forEach(form => {
+    form.addEventListener("submit", () => {
+      showLoader("Processing…");
+    });
+  });
+
+  // Hook navigation links (optional but recommended)
+  document.querySelectorAll("a.nav-link").forEach(link => {
+    link.addEventListener("click", () => {
+      showLoader("Loading…");
+    });
+  });
 </script>
 
 </body>

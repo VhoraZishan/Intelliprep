@@ -11,23 +11,39 @@
   <div class="page-container">
     <div class="card">
 
-      <h2 class="title">
-        Question {{ index + 1 }} / {{ total_questions }}
-      </h2>
+      <!-- HEADER -->
+      <div class="question-header">
+        <h2 class="title">
+          Question {{ index + 1 }} / {{ total_questions }}
+        </h2>
+
+        <!-- TIMER HOOK (will be filled later) -->
+        <div id="timer-placeholder"></div>
+      </div>
 
       <p class="question-text">
         {{ question_text }}
       </p>
 
       {% if is_attempted %}
-        <p class="info-text">
-          This question has already been attempted. Your answer is locked.
-        </p>
+        <div class="locked-notice">
+          <p class="info-text">
+            This question has already been submitted.
+            <br>
+            <strong>Your answer is locked.</strong>
+          </p>
+        </div>
       {% endif %}
 
-      <form method="post" action="/question/{{ index }}" class="question-form">
+      <!-- QUESTION FORM -->
+      <form
+        method="post"
+        action="/question/{{ index }}"
+        class="question-form"
+        id="questionForm"
+      >
         {% for key, value in options.items() %}
-          <label class="option">
+          <label class="option {% if is_attempted %}disabled{% endif %}">
             <input
               type="radio"
               name="selected_option"
@@ -43,27 +59,33 @@
         <button
           type="submit"
           class="primary-btn"
+          id="submitAnswerBtn"
           {% if is_attempted %}disabled{% endif %}
         >
-          Submit Answer
+          {% if is_attempted %}
+            Answer Submitted
+          {% else %}
+            Submit Answer
+          {% endif %}
         </button>
       </form>
 
+      <!-- NAVIGATION -->
       <div class="nav-bar">
         {% if index > 0 %}
-          <a href="/question/{{ index - 1 }}" class="nav-btn">
+          <a href="/question/{{ index - 1 }}" class="nav-btn nav-link">
             ← Previous
           </a>
         {% else %}
           <span class="nav-btn disabled">← Previous</span>
         {% endif %}
 
-        <a href="/question-list" class="nav-btn secondary">
+        <a href="/question-list" class="nav-btn secondary nav-link">
           Question List
         </a>
 
         {% if index < total_questions - 1 %}
-          <a href="/question/{{ index + 1 }}" class="nav-btn">
+          <a href="/question/{{ index + 1 }}" class="nav-btn nav-link">
             Next →
           </a>
         {% else %}
@@ -73,5 +95,51 @@
 
     </div>
   </div>
+
+  <script>
+    const form = document.getElementById("questionForm");
+    const submitBtn = document.getElementById("submitAnswerBtn");
+
+    if (form && submitBtn && !submitBtn.disabled) {
+      form.addEventListener("submit", () => {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Saving…";
+      });
+    }
+  </script>
+  <!-- GLOBAL LOADING OVERLAY -->
+<div id="loadingOverlay" class="loading-overlay">
+  <div class="loading-box">
+    <div class="spinner"></div>
+    <div class="loading-text">Please wait…</div>
+  </div>
+</div>
+
+<script>
+  const overlay = document.getElementById("loadingOverlay");
+
+  function showLoader(text) {
+    if (text) {
+      const label = overlay.querySelector(".loading-text");
+      if (label) label.textContent = text;
+    }
+    overlay.classList.add("active");
+  }
+
+  // Hook all form submissions
+  document.querySelectorAll("form").forEach(form => {
+    form.addEventListener("submit", () => {
+      showLoader("Processing…");
+    });
+  });
+
+  // Hook navigation links (optional but recommended)
+  document.querySelectorAll("a.nav-link").forEach(link => {
+    link.addEventListener("click", () => {
+      showLoader("Loading…");
+    });
+  });
+</script>
+
 </body>
 </html>

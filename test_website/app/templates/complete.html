@@ -5,7 +5,6 @@
   <title>Test Completed</title>
   <link rel="stylesheet" href="/static/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
 
 <body>
@@ -15,7 +14,7 @@
       <h1 class="title">Test Completed</h1>
 
       <p class="subtitle">
-        Thank you for taking the IntelliPrep assessment.
+        Your assessment has been successfully submitted.
       </p>
 
       <div class="score-box">
@@ -24,14 +23,61 @@
       </div>
 
       <p class="info-text">
-        You may now safely close this window.
+        All answers are now final and cannot be changed.
+        <br>
+        You may close this window or start a new test.
       </p>
 
-      <a href="/" class="primary-btn">
-  Take Test Again
-</a>
+      <a href="/" class="primary-btn" id="restartBtn">
+        Take Test Again
+      </a>
 
     </div>
   </div>
+
+  <script>
+    const restartBtn = document.getElementById("restartBtn");
+
+    if (restartBtn) {
+      restartBtn.addEventListener("click", () => {
+        restartBtn.textContent = "Starting new test…";
+        restartBtn.classList.add("disabled");
+      });
+    }
+  </script>
+  <!-- GLOBAL LOADING OVERLAY -->
+<div id="loadingOverlay" class="loading-overlay">
+  <div class="loading-box">
+    <div class="spinner"></div>
+    <div class="loading-text">Please wait…</div>
+  </div>
+</div>
+
+<script>
+  const overlay = document.getElementById("loadingOverlay");
+
+  function showLoader(text) {
+    if (text) {
+      const label = overlay.querySelector(".loading-text");
+      if (label) label.textContent = text;
+    }
+    overlay.classList.add("active");
+  }
+
+  // Hook all form submissions
+  document.querySelectorAll("form").forEach(form => {
+    form.addEventListener("submit", () => {
+      showLoader("Processing…");
+    });
+  });
+
+  // Hook navigation links (optional but recommended)
+  document.querySelectorAll("a.nav-link").forEach(link => {
+    link.addEventListener("click", () => {
+      showLoader("Loading…");
+    });
+  });
+</script>
+
 </body>
 </html>

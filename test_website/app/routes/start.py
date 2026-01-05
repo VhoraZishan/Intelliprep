@@ -1,33 +1,55 @@
 from fastapi import APIRouter
 from fastapi.responses import RedirectResponse
 from uuid import uuid4
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from app.db import get_connection
 from app.test_engine.generator import generate_question_ids
 
 router = APIRouter()
 
+# Test duration (minutes)
+TEST_DURATION_MINUTES = 90
+
+
 @router.post("/start")
 def start_test():
     session_id = str(uuid4())
+    start_time = datetime.utcnow()
+    expires_at = start_time + timedelta(minutes=TEST_DURATION_MINUTES)
+
+    # Generate fixed question list
     question_ids = generate_question_ids()
 
     conn = get_connection()
     cur = conn.cursor()
 
-    cur.execute(
-        """
-        INSERT INTO sessions (id, status, start_time, question_ids)
-        VALUES (%s, %s, %s, %s);
-        """,
-        (session_id, "IN_PROGRESS", datetime.utcnow(), question_ids),
-    )
+    try:
+        cur.execute(
+            """
+            INSERT INTO sessions (
+                id,
+                status,
+                start_time,
+                expires_at,
+                question_ids
+            )
+            VALUES (%s, 'IN_PROGRESS', %s, %s, %s);
+            """,
+            (session_id, start_time, expires_at, question_ids),
+        )
+        conn.commit()
 
-    conn.commit()
-    cur.close()
-    conn.close()
+    finally:
+        cur.close()
+        conn.close()
 
     response = RedirectResponse("/question-list", status_code=303)
-    response.set_cookie("session_id", session_id, httponly=True)
+    response.set_cookie(
+        "session_id",
+        session_id,
+        httponly=True,
+        secure=True,
+        samesite="none",
+    )
     return response

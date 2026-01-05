@@ -5,7 +5,6 @@
   <title>Question List</title>
   <link rel="stylesheet" href="/static/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
 
 <body>
@@ -17,10 +16,13 @@
         Attempt questions in any order. Each question can be attempted only once.
       </p>
 
+      <!-- PROGRESS -->
       <div class="progress-info">
-        Attempted: <b>{{ attempted_count }}</b> / {{ total_questions }}
+        Progress:
+        <b>{{ attempted_count }}</b> / {{ total_questions }} answered
       </div>
 
+      <!-- QUESTION GRID -->
       <div class="question-grid">
         {% for i in range(total_questions) %}
           {% if i in attempted_indexes %}
@@ -35,46 +37,90 @@
         {% endfor %}
       </div>
 
-      <!-- SUBMIT FORM -->
-      <form
-  method="post"
-  action="/submit"
-  class="submit-form"
-  id="submitForm"
-  data-attempted="{{ attempted_count }}"
-  data-total="{{ total_questions }}"
->
-  <button type="submit" class="primary-btn">
-    Submit Test
-  </button>
-</form>
+      <!-- SUBMIT SECTION -->
+      <div class="submit-section">
+        <p class="info-text">
+          You may submit the test at any time. Unanswered questions will be marked incorrect.
+        </p>
 
+        <form
+          method="post"
+          action="/submit"
+          class="submit-form"
+          id="submitForm"
+          data-attempted="{{ attempted_count }}"
+          data-total="{{ total_questions }}"
+        >
+          <button type="submit" class="primary-btn" id="submitBtn">
+            Submit Test
+          </button>
+        </form>
+      </div>
 
     </div>
   </div>
 
-  <!-- ⚠️ WARNING POPUP LOGIC -->
   <script>
-  const form = document.getElementById("submitForm");
+    const form = document.getElementById("submitForm");
+    const submitBtn = document.getElementById("submitBtn");
 
-  const attempted = parseInt(form.dataset.attempted, 10);
-  const total = parseInt(form.dataset.total, 10);
+    const attempted = parseInt(form.dataset.attempted, 10);
+    const total = parseInt(form.dataset.total, 10);
 
-  form.addEventListener("submit", function (e) {
-    if (attempted < total) {
-      const remaining = total - attempted;
+    form.addEventListener("submit", function (e) {
+      if (attempted < total) {
+        const remaining = total - attempted;
 
-      const confirmSubmit = confirm(
-        "You still have " + remaining + " unanswered question(s).\n\nAre you sure you want to submit the test?"
-      );
+        const confirmSubmit = window.confirm(
+          "You still have " + remaining + " unanswered question(s).\n\n" +
+          "Unanswered questions will be marked incorrect.\n\n" +
+          "Do you want to submit the test now?"
+        );
 
-      if (!confirmSubmit) {
-        e.preventDefault();
+        if (!confirmSubmit) {
+          e.preventDefault();
+          return;
+        }
       }
+
+      // Prevent double submit + give feedback
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting…";
+    });
+  </script>
+  <!-- GLOBAL LOADING OVERLAY -->
+<div id="loadingOverlay" class="loading-overlay">
+  <div class="loading-box">
+    <div class="spinner"></div>
+    <div class="loading-text">Please wait…</div>
+  </div>
+</div>
+
+<script>
+  const overlay = document.getElementById("loadingOverlay");
+
+  function showLoader(text) {
+    if (text) {
+      const label = overlay.querySelector(".loading-text");
+      if (label) label.textContent = text;
     }
+    overlay.classList.add("active");
+  }
+
+  // Hook all form submissions
+  document.querySelectorAll("form").forEach(form => {
+    form.addEventListener("submit", () => {
+      showLoader("Processing…");
+    });
+  });
+
+  // Hook navigation links (optional but recommended)
+  document.querySelectorAll("a.nav-link").forEach(link => {
+    link.addEventListener("click", () => {
+      showLoader("Loading…");
+    });
   });
 </script>
-
 
 </body>
 </html>
