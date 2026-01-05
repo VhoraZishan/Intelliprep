@@ -86,6 +86,8 @@ def question_list(request: Request):
             "total_questions": len(question_ids),
             "attempted_indexes": attempted_indexes,
             "attempted_count": len(attempted_indexes),
+            "expires_at": expires_at.strftime("%Y-%m-%dT%H:%M:%SZ"),
+
         },
     )
     response.headers["Cache-Control"] = "no-store"

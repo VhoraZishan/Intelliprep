@@ -9,7 +9,7 @@ from app.test_engine.generator import generate_question_ids
 router = APIRouter()
 
 # Test duration (minutes)
-TEST_DURATION_MINUTES = 90
+TEST_DURATION_MINUTES = 45
 
 
 @router.post("/start")

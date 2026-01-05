@@ -18,7 +18,10 @@
         </h2>
 
         <!-- TIMER HOOK (will be filled later) -->
-        <div id="timer-placeholder"></div>
+        <div id="test-timer" class="test-timer">
+  Time left: <span id="timeLeft">--:--</span>
+</div>
+
       </div>
 
       <p class="question-text">
@@ -140,6 +143,47 @@
     });
   });
 </script>
+
+<script>
+  const expiresAt = "{{ expires_at }}";
+  const expiresTime = new Date(expiresAt).getTime();
+
+  const timerEl = document.getElementById("timeLeft");
+  const timerBox = document.getElementById("test-timer");
+
+  let intervalId = null; // ✅ declared BEFORE use
+
+  function updateTimer() {
+    const now = Date.now();
+    let diff = Math.max(0, expiresTime - now);
+
+    const minutes = Math.floor(diff / 60000);
+    const seconds = Math.floor((diff % 60000) / 1000);
+
+    timerEl.textContent =
+      String(minutes).padStart(2, "0") +
+      ":" +
+      String(seconds).padStart(2, "0");
+
+    // Warning state (last 5 minutes)
+    if (diff <= 5 * 60 * 1000) {
+      timerBox.classList.add("warning");
+    }
+
+    // Stop ticking at zero (UI only)
+    if (diff === 0 && intervalId !== null) {
+      clearInterval(intervalId);
+      intervalId = null;
+    }
+  }
+
+  // Initial render
+  updateTimer();
+
+  // Start interval AFTER declaration
+  intervalId = setInterval(updateTimer, 1000);
+</script>
+
 
 </body>
 </html>

@@ -102,23 +102,28 @@ def get_question(index: int, request: Request):
         cur.close()
         put_connection(conn)
 
+    options = {
+    "A": question[1],
+    "B": question[2],
+    "C": question[3],
+    "D": question[4],
+}
+
     response = templates.TemplateResponse(
-        "question.html",
-        {
-            "request": request,
-            "index": index,
-            "total_questions": len(question_ids),
-            "question_text": question[0],
-            "options": {
-                "A": question[1],
-                "B": question[2],
-                "C": question[3],
-                "D": question[4],
-            },
-            "is_attempted": is_attempted,
-            "selected_option": selected_option,
-        },
-    )
+    "question.html",
+    {
+        "request": request,
+        "index": index,
+        "total_questions": len(question_ids),
+        "question_text": question[0],
+        "options": options,
+        "is_attempted": is_attempted,
+        "selected_option": selected_option,
+        "expires_at": expires_at.strftime("%Y-%m-%dT%H:%M:%SZ"),
+
+    },
+)
+
     response.headers["Cache-Control"] = "no-store"
     return response
 

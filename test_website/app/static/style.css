@@ -268,3 +268,18 @@ button:disabled {
   pointer-events: none;
   opacity: 0.6;
 }
+
+/* ---------- TEST TIMER ---------- */
+.test-timer {
+  font-size: 14px;
+  font-weight: 600;
+  background: #eef4ff;
+  color: #1e3a8a;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.test-timer.warning {
+  background: #fff4e5;
+  color: #7a4a00;
+}
