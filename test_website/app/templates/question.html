@@ -17,11 +17,10 @@
           Question {{ index + 1 }} / {{ total_questions }}
         </h2>
 
-        <!-- TIMER HOOK (will be filled later) -->
+        <!-- TIMER -->
         <div id="test-timer" class="test-timer">
-  Time left: <span id="timeLeft">--:--</span>
-</div>
-
+          Time left: <span id="timeLeft">--:--</span>
+        </div>
       </div>
 
       <p class="question-text">
@@ -31,8 +30,7 @@
       {% if is_attempted %}
         <div class="locked-notice">
           <p class="info-text">
-            This question has already been submitted.
-            <br>
+            This question has already been submitted.<br>
             <strong>Your answer is locked.</strong>
           </p>
         </div>
@@ -42,8 +40,8 @@
       <form
         method="post"
         action="/question/{{ index }}"
-        class="question-form"
         id="questionForm"
+        class="question-form"
       >
         {% for key, value in options.items() %}
           <label class="option {% if is_attempted %}disabled{% endif %}">
@@ -99,91 +97,78 @@
     </div>
   </div>
 
+  <!-- LOADING OVERLAY -->
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-box">
+      <div class="spinner"></div>
+      <div class="loading-text">Please wait…</div>
+    </div>
+  </div>
+
+  <!-- SAFE SUBMIT + NAV LOGIC -->
   <script>
     const form = document.getElementById("questionForm");
     const submitBtn = document.getElementById("submitAnswerBtn");
+    const overlay = document.getElementById("loadingOverlay");
 
+    function showLoader(text) {
+      const label = overlay.querySelector(".loading-text");
+      if (label && text) label.textContent = text;
+      overlay.classList.add("active");
+    }
+
+    // Submit answer
     if (form && submitBtn && !submitBtn.disabled) {
       form.addEventListener("submit", () => {
         submitBtn.disabled = true;
         submitBtn.textContent = "Saving…";
+        showLoader("Saving answer…");
       });
     }
+
+    // Navigation links
+    document.querySelectorAll("a.nav-link").forEach(link => {
+      link.addEventListener("click", () => {
+        showLoader("Loading…");
+      });
+    });
   </script>
-  <!-- GLOBAL LOADING OVERLAY -->
-<div id="loadingOverlay" class="loading-overlay">
-  <div class="loading-box">
-    <div class="spinner"></div>
-    <div class="loading-text">Please wait…</div>
-  </div>
-</div>
 
-<script>
-  const overlay = document.getElementById("loadingOverlay");
+  <!-- TIMER SCRIPT -->
+  <script>
+    const expiresAt = "{{ expires_at }}";
+    const expiresTime = new Date(expiresAt).getTime();
 
-  function showLoader(text) {
-    if (text) {
-      const label = overlay.querySelector(".loading-text");
-      if (label) label.textContent = text;
-    }
-    overlay.classList.add("active");
-  }
+    const timerEl = document.getElementById("timeLeft");
+    const timerBox = document.getElementById("test-timer");
 
-  // Hook all form submissions
-  document.querySelectorAll("form").forEach(form => {
-    form.addEventListener("submit", () => {
-      showLoader("Processing…");
-    });
-  });
+    let intervalId = null;
 
-  // Hook navigation links (optional but recommended)
-  document.querySelectorAll("a.nav-link").forEach(link => {
-    link.addEventListener("click", () => {
-      showLoader("Loading…");
-    });
-  });
-</script>
+    function updateTimer() {
+      const now = Date.now();
+      const diff = Math.max(0, expiresTime - now);
 
-<script>
-  const expiresAt = "{{ expires_at }}";
-  const expiresTime = new Date(expiresAt).getTime();
+      const minutes = Math.floor(diff / 60000);
+      const seconds = Math.floor((diff % 60000) / 1000);
 
-  const timerEl = document.getElementById("timeLeft");
-  const timerBox = document.getElementById("test-timer");
+      timerEl.textContent =
+        String(minutes).padStart(2, "0") +
+        ":" +
+        String(seconds).padStart(2, "0");
 
-  let intervalId = null; // ✅ declared BEFORE use
+      if (diff <= 5 * 60 * 1000) {
+        timerBox.classList.add("warning");
+      }
 
-  function updateTimer() {
-    const now = Date.now();
-    let diff = Math.max(0, expiresTime - now);
-
-    const minutes = Math.floor(diff / 60000);
-    const seconds = Math.floor((diff % 60000) / 1000);
-
-    timerEl.textContent =
-      String(minutes).padStart(2, "0") +
-      ":" +
-      String(seconds).padStart(2, "0");
-
-    // Warning state (last 5 minutes)
-    if (diff <= 5 * 60 * 1000) {
-      timerBox.classList.add("warning");
+      if (diff === 0 && intervalId !== null) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
     }
 
-    // Stop ticking at zero (UI only)
-    if (diff === 0 && intervalId !== null) {
-      clearInterval(intervalId);
-      intervalId = null;
-    }
-  }
-
-  // Initial render
-  updateTimer();
-
-  // Start interval AFTER declaration
-  intervalId = setInterval(updateTimer, 1000);
-</script>
-
+    updateTimer();
+    intervalId = setInterval(updateTimer, 1000);
+  </script>
 
 </body>
 </html>

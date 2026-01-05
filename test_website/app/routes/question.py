@@ -16,9 +16,10 @@ def get_question(index: int, request: Request):
 
     conn = get_connection()
     cur = conn.cursor()
+    now = datetime.utcnow()
 
     try:
-        # Fetch session
+        # Fetch session ONCE
         cur.execute(
             """
             SELECT status, expires_at, question_ids
@@ -27,15 +28,13 @@ def get_question(index: int, request: Request):
             """,
             (session_id,),
         )
-        session = cur.fetchone()
-
-        if not session:
+        row = cur.fetchone()
+        if not row:
             return RedirectResponse("/?reason=invalid_session", status_code=303)
 
-        status, expires_at, question_ids = session
-        now = datetime.utcnow()
+        status, expires_at, question_ids = row
 
-        # Expire session if needed
+        # Handle expiry
         if status == "IN_PROGRESS" and expires_at <= now:
             cur.execute(
                 """
@@ -72,7 +71,7 @@ def get_question(index: int, request: Request):
         if not question:
             raise HTTPException(status_code=404)
 
-        # Ensure attempt row exists (idempotent)
+        # Fetch / create attempt (idempotent)
         cur.execute(
             """
             SELECT selected_option, submitted_at
@@ -98,32 +97,30 @@ def get_question(index: int, request: Request):
             selected_option, submitted_at = attempt
             is_attempted = submitted_at is not None
 
+        options = {
+            "A": question[1],
+            "B": question[2],
+            "C": question[3],
+            "D": question[4],
+        }
+
     finally:
         cur.close()
         put_connection(conn)
 
-    options = {
-    "A": question[1],
-    "B": question[2],
-    "C": question[3],
-    "D": question[4],
-}
-
     response = templates.TemplateResponse(
-    "question.html",
-    {
-        "request": request,
-        "index": index,
-        "total_questions": len(question_ids),
-        "question_text": question[0],
-        "options": options,
-        "is_attempted": is_attempted,
-        "selected_option": selected_option,
-        "expires_at": expires_at.strftime("%Y-%m-%dT%H:%M:%SZ"),
-
-    },
-)
-
+        "question.html",
+        {
+            "request": request,
+            "index": index,
+            "total_questions": len(question_ids),
+            "question_text": question[0],
+            "options": options,
+            "is_attempted": is_attempted,
+            "selected_option": selected_option,
+            "expires_at": expires_at.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        },
+    )
     response.headers["Cache-Control"] = "no-store"
     return response
 
@@ -136,9 +133,10 @@ def submit_answer(index: int, request: Request, selected_option: str = Form(...)
 
     conn = get_connection()
     cur = conn.cursor()
+    now = datetime.utcnow()
 
     try:
-        # Fetch session
+        # Fetch session ONCE
         cur.execute(
             """
             SELECT status, expires_at, question_ids
@@ -147,15 +145,12 @@ def submit_answer(index: int, request: Request, selected_option: str = Form(...)
             """,
             (session_id,),
         )
-        session = cur.fetchone()
-
-        if not session:
+        row = cur.fetchone()
+        if not row:
             return RedirectResponse("/?reason=invalid_session", status_code=303)
 
-        status, expires_at, question_ids = session
-        now = datetime.utcnow()
+        status, expires_at, question_ids = row
 
-        # Handle expiry
         if status == "IN_PROGRESS" and expires_at <= now:
             cur.execute(
                 """
@@ -176,7 +171,7 @@ def submit_answer(index: int, request: Request, selected_option: str = Form(...)
 
         question_id = question_ids[index]
 
-        # Fetch attempt (must exist)
+        # Fetch attempt
         cur.execute(
             """
             SELECT started_at, submitted_at
@@ -186,40 +181,32 @@ def submit_answer(index: int, request: Request, selected_option: str = Form(...)
             (session_id, question_id),
         )
         attempt = cur.fetchone()
-
         if not attempt:
             return RedirectResponse("/question-list", status_code=303)
 
         started_at, submitted_at = attempt
-
-        # Reject resubmission
         if submitted_at is not None:
             return RedirectResponse("/question-list", status_code=303)
 
-        # Compute timing
-        time_taken = int((now - started_at).total_seconds())
-        if time_taken < 0:
-            time_taken = 0
+        time_taken = max(0, int((now - started_at).total_seconds()))
 
-        # Compute attempt_number atomically
+        # Faster attempt_number computation
         cur.execute(
             """
-            SELECT COUNT(*)
+            SELECT COALESCE(MAX(attempt_number), 0)
             FROM attempts
-            WHERE session_id = %s AND submitted_at IS NOT NULL;
+            WHERE session_id = %s;
             """,
             (session_id,),
         )
         attempt_number = cur.fetchone()[0] + 1
 
-        # Fetch correct option
         cur.execute(
             "SELECT correct_option FROM questions WHERE id = %s;",
             (question_id,),
         )
         correct_option = cur.fetchone()[0]
 
-        # Submit attempt (single transition)
         cur.execute(
             """
             UPDATE attempts
@@ -247,7 +234,6 @@ def submit_answer(index: int, request: Request, selected_option: str = Form(...)
         cur.close()
         put_connection(conn)
 
-    # Navigate forward
     next_index = index + 1
     if next_index < len(question_ids):
         return RedirectResponse(f"/question/{next_index}", status_code=303)

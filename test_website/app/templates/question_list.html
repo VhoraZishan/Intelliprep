@@ -16,26 +16,24 @@
         Attempt questions in any order. Each question can be attempted only once.
       </p>
 
+      <!-- TIMER -->
+      <div id="test-timer" class="test-timer">
+        Time left: <span id="timeLeft">--:--</span>
+      </div>
+
       <!-- PROGRESS -->
       <div class="progress-info">
         Progress:
         <b>{{ attempted_count }}</b> / {{ total_questions }} answered
       </div>
-      <div id="test-timer" class="test-timer">
-  Time left: <span id="timeLeft">--:--</span>
-</div>
 
       <!-- QUESTION GRID -->
       <div class="question-grid">
         {% for i in range(total_questions) %}
           {% if i in attempted_indexes %}
-            <span class="question-btn attempted">
-              Q{{ i + 1 }}
-            </span>
+            <span class="question-btn attempted">Q{{ i + 1 }}</span>
           {% else %}
-            <a href="/question/{{ i }}" class="question-btn">
-              Q{{ i + 1 }}
-            </a>
+            <a href="/question/{{ i }}" class="question-btn">Q{{ i + 1 }}</a>
           {% endif %}
         {% endfor %}
       </div>
@@ -49,7 +47,6 @@
         <form
           method="post"
           action="/submit"
-          class="submit-form"
           id="submitForm"
           data-attempted="{{ attempted_count }}"
           data-total="{{ total_questions }}"
@@ -63,106 +60,117 @@
     </div>
   </div>
 
+  <!-- LOADING OVERLAY -->
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-box">
+      <div class="spinner"></div>
+      <div class="loading-text">Submitting test…</div>
+    </div>
+  </div>
+
+  <!-- CONFIRM MODAL -->
+  <div id="confirmModal" class="modal-overlay">
+    <div class="modal-card">
+      <h3 class="modal-title">Submit Test?</h3>
+      <p class="modal-text" id="modalText"></p>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-secondary" id="cancelSubmit">
+          Cancel
+        </button>
+        <button type="button" class="primary-btn" id="confirmSubmit">
+          Submit Test
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUBMIT LOGIC -->
   <script>
     const form = document.getElementById("submitForm");
     const submitBtn = document.getElementById("submitBtn");
+    const overlay = document.getElementById("loadingOverlay");
+
+    const modal = document.getElementById("confirmModal");
+    const modalText = document.getElementById("modalText");
+    const cancelBtn = document.getElementById("cancelSubmit");
+    const confirmBtn = document.getElementById("confirmSubmit");
 
     const attempted = parseInt(form.dataset.attempted, 10);
     const total = parseInt(form.dataset.total, 10);
 
+    function showLoader(text) {
+      const label = overlay.querySelector(".loading-text");
+      if (label && text) label.textContent = text;
+      overlay.classList.add("active");
+    }
+
     form.addEventListener("submit", function (e) {
       if (attempted < total) {
+        e.preventDefault();
+
         const remaining = total - attempted;
+        modalText.textContent =
+          `You still have ${remaining} unanswered question(s). ` +
+          `Unanswered questions will be marked incorrect.`;
 
-        const confirmSubmit = window.confirm(
-          "You still have " + remaining + " unanswered question(s).\n\n" +
-          "Unanswered questions will be marked incorrect.\n\n" +
-          "Do you want to submit the test now?"
-        );
-
-        if (!confirmSubmit) {
-          e.preventDefault();
-          return;
-        }
+        modal.classList.add("active");
+        return;
       }
 
-      // Prevent double submit + give feedback
       submitBtn.disabled = true;
       submitBtn.textContent = "Submitting…";
+      showLoader("Submitting test…");
+    });
+
+    cancelBtn.addEventListener("click", () => {
+      modal.classList.remove("active");
+    });
+
+    confirmBtn.addEventListener("click", () => {
+      modal.classList.remove("active");
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting…";
+      showLoader("Submitting test…");
+      form.submit();
     });
   </script>
-  <!-- GLOBAL LOADING OVERLAY -->
-<div id="loadingOverlay" class="loading-overlay">
-  <div class="loading-box">
-    <div class="spinner"></div>
-    <div class="loading-text">Please wait…</div>
-  </div>
-</div>
 
-<script>
-  const overlay = document.getElementById("loadingOverlay");
+  <!-- TIMER SCRIPT -->
+  <script>
+    const expiresAt = "{{ expires_at }}";
+    const expiresTime = new Date(expiresAt).getTime();
 
-  function showLoader(text) {
-    if (text) {
-      const label = overlay.querySelector(".loading-text");
-      if (label) label.textContent = text;
-    }
-    overlay.classList.add("active");
-  }
+    const timerEl = document.getElementById("timeLeft");
+    const timerBox = document.getElementById("test-timer");
 
-  // Hook all form submissions
-  document.querySelectorAll("form").forEach(form => {
-    form.addEventListener("submit", () => {
-      showLoader("Processing…");
-    });
-  });
+    let intervalId = null;
 
-  // Hook navigation links (optional but recommended)
-  document.querySelectorAll("a.nav-link").forEach(link => {
-    link.addEventListener("click", () => {
-      showLoader("Loading…");
-    });
-  });
-</script>
-<script>
-  const expiresAt = "{{ expires_at }}";
-  const expiresTime = new Date(expiresAt).getTime();
+    function updateTimer() {
+      const now = Date.now();
+      const diff = Math.max(0, expiresTime - now);
 
-  const timerEl = document.getElementById("timeLeft");
-  const timerBox = document.getElementById("test-timer");
+      const minutes = Math.floor(diff / 60000);
+      const seconds = Math.floor((diff % 60000) / 1000);
 
-  let intervalId = null; // ✅ declared BEFORE use
+      timerEl.textContent =
+        String(minutes).padStart(2, "0") +
+        ":" +
+        String(seconds).padStart(2, "0");
 
-  function updateTimer() {
-    const now = Date.now();
-    let diff = Math.max(0, expiresTime - now);
+      if (diff <= 5 * 60 * 1000) {
+        timerBox.classList.add("warning");
+      }
 
-    const minutes = Math.floor(diff / 60000);
-    const seconds = Math.floor((diff % 60000) / 1000);
-
-    timerEl.textContent =
-      String(minutes).padStart(2, "0") +
-      ":" +
-      String(seconds).padStart(2, "0");
-
-    // Warning state (last 5 minutes)
-    if (diff <= 5 * 60 * 1000) {
-      timerBox.classList.add("warning");
+      if (diff === 0 && intervalId !== null) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
     }
 
-    // Stop ticking at zero (UI only)
-    if (diff === 0 && intervalId !== null) {
-      clearInterval(intervalId);
-      intervalId = null;
-    }
-  }
-
-  // Initial render
-  updateTimer();
-
-  // Start interval AFTER declaration
-  intervalId = setInterval(updateTimer, 1000);
-</script>
+    updateTimer();
+    intervalId = setInterval(updateTimer, 1000);
+  </script>
 
 </body>
 </html>

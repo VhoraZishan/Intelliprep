@@ -38,7 +38,10 @@
           <li>You may attempt questions in <b>any order</b>.</li>
           <li>Each question can be attempted <b>only once</b>.</li>
           <li>Once submitted, an answer <b>cannot be changed</b>.</li>
-          <li>This app runs on a free server tier, so please bear with us if loading takes a few extra seconds!</li>
+          <li>
+            This app runs on a free server tier, so please allow a few seconds
+            for pages to load.
+          </li>
         </ul>
       </div>
 
@@ -59,7 +62,7 @@
         </p>
       </div>
 
-      <form method="post" action="/start" class="start-form" id="startForm">
+      <form method="post" action="/start" id="startForm">
         <button type="submit" class="primary-btn" id="startBtn">
           Start Test
         </button>
@@ -68,6 +71,15 @@
     </div>
   </div>
 
+  <!-- LOADING OVERLAY -->
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-box">
+      <div class="spinner"></div>
+      <div class="loading-text">Starting test…</div>
+    </div>
+  </div>
+
+  <!-- PAGE LOGIC -->
   <script>
     const params = new URLSearchParams(window.location.search);
     const reason = params.get("reason");
@@ -75,6 +87,13 @@
     const box = document.getElementById("message-box");
     const startBtn = document.getElementById("startBtn");
     const form = document.getElementById("startForm");
+    const overlay = document.getElementById("loadingOverlay");
+
+    function showLoader(text) {
+      const label = overlay.querySelector(".loading-text");
+      if (label && text) label.textContent = text;
+      overlay.classList.add("active");
+    }
 
     if (reason) {
       let message = "";
@@ -86,7 +105,7 @@
           break;
 
         case "session_expired":
-          message = "Your test session expired due to time limit. Please start again.";
+          message = "Your test session expired due to the time limit. Please start again.";
           type = "warning";
           break;
 
@@ -99,45 +118,13 @@
       box.classList.add(type);
     }
 
-    // Prevent double submit + show loading feedback
+    // Safe submit handler
     form.addEventListener("submit", () => {
       startBtn.disabled = true;
       startBtn.textContent = "Starting…";
+      showLoader("Starting test…");
     });
   </script>
-  <!-- GLOBAL LOADING OVERLAY -->
-<div id="loadingOverlay" class="loading-overlay">
-  <div class="loading-box">
-    <div class="spinner"></div>
-    <div class="loading-text">Please wait…</div>
-  </div>
-</div>
-
-<script>
-  const overlay = document.getElementById("loadingOverlay");
-
-  function showLoader(text) {
-    if (text) {
-      const label = overlay.querySelector(".loading-text");
-      if (label) label.textContent = text;
-    }
-    overlay.classList.add("active");
-  }
-
-  // Hook all form submissions
-  document.querySelectorAll("form").forEach(form => {
-    form.addEventListener("submit", () => {
-      showLoader("Processing…");
-    });
-  });
-
-  // Hook navigation links (optional but recommended)
-  document.querySelectorAll("a.nav-link").forEach(link => {
-    link.addEventListener("click", () => {
-      showLoader("Loading…");
-    });
-  });
-</script>
 
 </body>
 </html>

@@ -11,15 +11,15 @@ templates = Jinja2Templates(directory="app/templates")
 @router.get("/question-list")
 def question_list(request: Request):
     session_id = request.cookies.get("session_id")
-
     if not session_id:
         return RedirectResponse("/?reason=invalid_session", status_code=303)
 
     conn = get_connection()
     cur = conn.cursor()
+    now = datetime.utcnow()
 
     try:
-        # Fetch session
+        # Fetch session ONCE
         cur.execute(
             """
             SELECT status, expires_at, question_ids
@@ -28,15 +28,13 @@ def question_list(request: Request):
             """,
             (session_id,),
         )
-        session = cur.fetchone()
-
-        if not session:
+        row = cur.fetchone()
+        if not row:
             return RedirectResponse("/?reason=invalid_session", status_code=303)
 
-        status, expires_at, question_ids = session
-        now = datetime.utcnow()
+        status, expires_at, question_ids = row
 
-        # Handle expired session
+        # Expiry handling
         if status == "IN_PROGRESS" and expires_at <= now:
             cur.execute(
                 """
@@ -49,7 +47,6 @@ def question_list(request: Request):
             conn.commit()
             return RedirectResponse("/?reason=session_expired", status_code=303)
 
-        # Handle non-active sessions
         if status == "COMPLETED":
             return RedirectResponse("/complete", status_code=303)
 
@@ -72,11 +69,13 @@ def question_list(request: Request):
         cur.close()
         put_connection(conn)
 
-    # Map attempted question IDs to indexes
+    # Precompute id → index map (O(n))
+    index_map = {qid: idx for idx, qid in enumerate(question_ids)}
+
     attempted_indexes = {
-        question_ids.index(qid)
+        index_map[qid]
         for qid in attempted_ids
-        if qid in question_ids
+        if qid in index_map
     }
 
     response = templates.TemplateResponse(
@@ -87,7 +86,6 @@ def question_list(request: Request):
             "attempted_indexes": attempted_indexes,
             "attempted_count": len(attempted_indexes),
             "expires_at": expires_at.strftime("%Y-%m-%dT%H:%M:%SZ"),
-
         },
     )
     response.headers["Cache-Control"] = "no-store"
