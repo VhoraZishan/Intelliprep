@@ -2,7 +2,7 @@ from fastapi import APIRouter, Request, HTTPException, Form
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import RedirectResponse
 from datetime import datetime
-from app.db import get_connection
+from app.db import get_connection, put_connection
 
 router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
@@ -100,7 +100,7 @@ def get_question(index: int, request: Request):
 
     finally:
         cur.close()
-        conn.close()
+        put_connection(conn)
 
     response = templates.TemplateResponse(
         "question.html",
@@ -240,7 +240,7 @@ def submit_answer(index: int, request: Request, selected_option: str = Form(...)
 
     finally:
         cur.close()
-        conn.close()
+        put_connection(conn)
 
     # Navigate forward
     next_index = index + 1

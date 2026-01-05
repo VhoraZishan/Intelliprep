@@ -2,7 +2,7 @@ from fastapi import APIRouter, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import RedirectResponse
 from datetime import datetime
-from app.db import get_connection
+from app.db import get_connection, put_connection
 
 router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
@@ -70,7 +70,7 @@ def question_list(request: Request):
 
     finally:
         cur.close()
-        conn.close()
+        put_connection(conn)
 
     # Map attempted question IDs to indexes
     attempted_indexes = {

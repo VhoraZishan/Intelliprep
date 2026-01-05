@@ -2,7 +2,7 @@ from fastapi import APIRouter, Request, Query
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 from datetime import datetime
-from app.db import get_connection
+from app.db import get_connection, put_connection
 
 router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
@@ -80,7 +80,7 @@ def submit_test(request: Request):
 
     finally:
         cur.close()
-        conn.close()
+        put_connection(conn)
 
     response = RedirectResponse(f"/complete?score={score}", status_code=303)
     response.delete_cookie("session_id")

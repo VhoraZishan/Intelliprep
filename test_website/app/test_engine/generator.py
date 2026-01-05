@@ -1,7 +1,7 @@
 import random
 from collections import defaultdict, deque
 from typing import List
-from app.db import get_connection
+from app.db import get_connection,put_connection
 
 
 TOTAL_QUESTIONS = 25
@@ -90,11 +90,11 @@ def generate_question_ids() -> List[int]:
 
         if remaining > 0:
             cur.close()
-            conn.close()
+            put_connection(conn)
             raise RuntimeError(f"Dataset cannot satisfy domain quota for {domain}")
 
     cur.close()
-    conn.close()
+    put_connection(conn)
 
     if len(selected) != TOTAL_QUESTIONS:
         raise RuntimeError("Failed to generate 25-question test")

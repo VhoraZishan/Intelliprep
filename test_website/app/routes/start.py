@@ -3,7 +3,7 @@ from fastapi.responses import RedirectResponse
 from uuid import uuid4
 from datetime import datetime, timedelta
 
-from app.db import get_connection
+from app.db import get_connection, put_connection
 from app.test_engine.generator import generate_question_ids
 
 router = APIRouter()
@@ -42,7 +42,7 @@ def start_test():
 
     finally:
         cur.close()
-        conn.close()
+        put_connection(conn)
 
     response = RedirectResponse("/question-list", status_code=303)
     response.set_cookie(

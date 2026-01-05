@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
-from app.db import get_connection
+from app.db import get_connection, put_connection
 from app.routes import start, question, question_list, submit
 from datetime import datetime
 
@@ -34,7 +34,7 @@ def home(request: Request):
 
         finally:
             cur.close()
-            conn.close()
+            put_connection(conn)
 
         if row:
             status, expires_at = row
